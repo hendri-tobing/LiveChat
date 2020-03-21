@@ -5,6 +5,9 @@ defmodule LiveChat.Auth.User do
   schema "users" do
     field :name, :string
 
+    has_many :conversation_members, LiveChat.Chat.ConversationMember
+    has_many :conversations, through: [:conversation_members, :conversation]
+
     timestamps()
   end
 
